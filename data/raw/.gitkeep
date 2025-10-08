@@ -1,0 +1,8 @@
+# Raw Data Directory
+
+Place your original CSV files here:
+- electronics_sales_2023_2024.csv (main dataset)
+- Any additional raw data files
+
+⚠️ IMPORTANT: Never modify files in this directory!
+This preserves the original data for reproducibility.

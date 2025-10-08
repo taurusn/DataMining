@@ -1,0 +1,9 @@
+# Interim Data Directory
+
+This directory contains intermediate processed data:
+- Data after initial cleaning
+- Partially transformed datasets
+- Temporary data files during processing
+- Backup copies during multi-step transformations
+
+Files here are stepping stones to final processed data.

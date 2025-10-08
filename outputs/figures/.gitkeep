@@ -1,0 +1,10 @@
+# Figures Directory
+
+This directory will contain generated visualizations and plots:
+- EDA charts and histograms
+- Correlation heatmaps
+- Model performance plots
+- ROC curves and confusion matrices
+- Feature importance plots
+
+Files will be automatically saved here during analysis.

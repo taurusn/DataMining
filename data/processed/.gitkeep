@@ -1,0 +1,9 @@
+# Processed Data Directory
+
+This directory contains final, model-ready datasets:
+- Fully cleaned and preprocessed data
+- Feature-engineered datasets
+- Train/test splits
+- Scaled and encoded data ready for ML models
+
+These files are the direct input to machine learning algorithms.

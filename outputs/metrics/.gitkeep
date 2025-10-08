@@ -1,0 +1,10 @@
+# Metrics Directory
+
+This directory will contain model evaluation results:
+- Performance metrics (accuracy, precision, recall, f1-score)
+- Cross-validation results
+- Model comparison reports
+- Classification reports
+- Statistical summaries
+
+Files will be saved in CSV and JSON formats.
