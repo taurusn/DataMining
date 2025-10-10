@@ -1,0 +1,17 @@
+{
+  "numerical_features": 6,
+  "total_records": 20000,
+  "data_quality_issues": [],
+  "distribution_issues": [
+    "Total Price: Moderately skewed (0.90)",
+    "Add-on Total: Moderately skewed (0.94)"
+  ],
+  "outlier_concerns": [],
+  "correlation_insights": [
+    "No multicollinearity concerns"
+  ],
+  "preprocessing_recommendations": [
+    "Apply feature scaling (StandardScaler/MinMaxScaler) for ML algorithms",
+    "Validate and clean any price calculation discrepancies found"
+  ]
+}
