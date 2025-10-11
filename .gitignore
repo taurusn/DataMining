@@ -130,3 +130,5 @@ outputs/reports/*.html
 # OS
 .DS_Store
 Thumbs.db
+png
+*.png

@@ -8,10 +8,13 @@
   ],
   "outlier_concerns": [],
   "correlation_insights": [
-    "No multicollinearity concerns"
+    "No multicollinearity concerns",
+    "Pricing formula: Total = Unit Price \u00d7 Quantity",
+    "Add-ons are separate charges"
   ],
   "preprocessing_recommendations": [
     "Apply feature scaling (StandardScaler/MinMaxScaler) for ML algorithms",
-    "Validate and clean any price calculation discrepancies found"
+    "\u2705 NO DATA QUALITY ISSUES: Pricing formula validated as correct (Total = Unit \u00d7 Qty)",
+    "Consider Add-on Total as separate feature for upselling analysis (not part of base price)"
   ]
 }
