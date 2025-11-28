@@ -132,3 +132,4 @@ outputs/reports/*.html
 Thumbs.db
 png
 *.png
+.claude/
