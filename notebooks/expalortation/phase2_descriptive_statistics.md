@@ -15,11 +15,11 @@ pd.set_option('display.width', None)
 pd.set_option('display.max_colwidth', 50)
 pd.set_option('display.float_format', '{:.3f}'.format)
 
-print("✅ Libraries imported successfully!")
+print(" Libraries imported successfully!")
 print(f"📅 Analysis started on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 ```
 
-    ✅ Libraries imported successfully!
+     Libraries imported successfully!
     📅 Analysis started on: 2025-10-09 00:17:17
     
 
@@ -59,12 +59,12 @@ def save_figure(fig, filename, category='distributions', formats=['png']):
         fig.savefig(filepath, format=fmt, dpi=300, bbox_inches='tight')
         print(f"💾 Saved: figures/{category}/{filename}.{fmt}")
 
-print("✅ Figure saving configuration complete!")
-print(f"📊 Figures will be saved to: {FIGURE_DIR.absolute()}")
+print(" Figure saving configuration complete!")
+print(f" Figures will be saved to: {FIGURE_DIR.absolute()}")
 ```
 
-    ✅ Figure saving configuration complete!
-    📊 Figures will be saved to: c:\Users\hatim\OneDrive\سطح المكتب\iau\25.26\Data_Mining\Project\DataMining\notebooks\expalortation\..\..\outputs\figures
+     Figure saving configuration complete!
+     Figures will be saved to: c:\Users\hatim\OneDrive\سطح المكتب\iau\25.26\Data_Mining\Project\DataMining\notebooks\expalortation\..\..\outputs\figures
     
 
 
@@ -78,8 +78,8 @@ try:
     # Convert Purchase Date to datetime (from Phase 1)
     df['Purchase Date'] = pd.to_datetime(df['Purchase Date'], format='%Y-%m-%d')
     
-    print("✅ Data loaded successfully!")
-    print(f"📊 Dataset shape: {df.shape}")
+    print(" Data loaded successfully!")
+    print(f" Dataset shape: {df.shape}")
     print(f"📅 Date range: {df['Purchase Date'].min()} to {df['Purchase Date'].max()}")
     
 except Exception as e:
@@ -87,8 +87,8 @@ except Exception as e:
     print("Please ensure Phase 1 (data loading) has been completed first.")
 ```
 
-    ✅ Data loaded successfully!
-    📊 Dataset shape: (20000, 16)
+     Data loaded successfully!
+     Dataset shape: (20000, 16)
     📅 Date range: 2023-09-24 00:00:00 to 2024-09-23 00:00:00
     
 
@@ -98,7 +98,7 @@ except Exception as e:
 
 ```python
 # Step 2.1: Identify numerical columns
-print("✅ Step 2.1 COMPLETED: Numerical Column Identification")
+print(" Step 2.1 COMPLETED: Numerical Column Identification")
 print("=" * 70)
 
 # Get numerical columns
@@ -106,7 +106,7 @@ numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()
 categorical_cols = df.select_dtypes(include=['object']).columns.tolist()
 datetime_cols = df.select_dtypes(include=['datetime']).columns.tolist()
 
-print(f"📊 NUMERICAL COLUMNS ({len(numeric_cols)}):")
+print(f" NUMERICAL COLUMNS ({len(numeric_cols)}):")
 for i, col in enumerate(numeric_cols, 1):
     data_range = f"{df[col].min():.2f} to {df[col].max():.2f}"
     print(f"   {i}. {col} ({df[col].dtype}) - Range: {data_range}")
@@ -132,12 +132,12 @@ missing_expected = [col for col in expected_numeric if col not in numeric_cols]
 if missing_expected:
     print(f"⚠️  Missing expected columns: {missing_expected}")
 else:
-    print("✅ All expected numerical columns found!")
+    print(" All expected numerical columns found!")
 ```
 
-    ✅ Step 2.1 COMPLETED: Numerical Column Identification
+     Step 2.1 COMPLETED: Numerical Column Identification
     ======================================================================
-    📊 NUMERICAL COLUMNS (7):
+     NUMERICAL COLUMNS (7):
        1. Customer ID (int64) - Range: 1000.00 to 19998.00
        2. Age (int64) - Range: 18.00 to 80.00
        3. Rating (int64) - Range: 1.00 to 5.00
@@ -162,7 +162,7 @@ else:
     📋 ANALYSIS FOCUS:
        • Will analyze 7 numerical features in detail
        • Expected columns: Customer ID, Age, Rating, Total Price, Unit Price, Quantity, Add-on Total
-    ✅ All expected numerical columns found!
+     All expected numerical columns found!
     
 
 ## 📈 Step 2.2: Compute Basic Statistics
@@ -171,11 +171,11 @@ else:
 
 ```python
 # Step 2.2: Compute basic statistics
-print("✅ Step 2.2 COMPLETED: Basic Statistical Summary")
+print(" Step 2.2 COMPLETED: Basic Statistical Summary")
 print("=" * 70)
 
 # Standard describe() - shows count, mean, std, min, quartiles, max
-print("📊 STANDARD DESCRIPTIVE STATISTICS:")
+print(" STANDARD DESCRIPTIVE STATISTICS:")
 # Exclude Customer ID from statistical analysis (it's an identifier, not a variable)
 analysis_cols = [col for col in numeric_cols if col != 'Customer ID']
 basic_stats = df[analysis_cols].describe()
@@ -208,7 +208,7 @@ for col in analysis_cols:
     std_val = df[col].std()
     cv = (std_val / mean_val * 100) if mean_val != 0 else 0
     
-    print(f"\n   📊 {col}:")
+    print(f"\n    {col}:")
     print(f"      • Average: {mean_val:.2f} | Median: {median_val:.2f}")
     print(f"      • Standard Deviation: {std_val:.2f}")
     print(f"      • Coefficient of Variation: {cv:.1f}% ({'High variability' if cv > 50 else 'Moderate variability' if cv > 20 else 'Low variability'})")
@@ -219,12 +219,12 @@ for col in analysis_cols:
     elif mean_val < median_val * 0.8:
         print(f"      ⚠️  Left-skewed distribution (mean < median)")
     else:
-        print(f"      ✅ Approximately symmetric distribution")
+        print(f"       Approximately symmetric distribution")
 ```
 
-    ✅ Step 2.2 COMPLETED: Basic Statistical Summary
+     Step 2.2 COMPLETED: Basic Statistical Summary
     ======================================================================
-    📊 STANDARD DESCRIPTIVE STATISTICS:
+     STANDARD DESCRIPTIVE STATISTICS:
     
 
 
@@ -461,37 +461,37 @@ for col in analysis_cols:
     
     🔍 KEY STATISTICAL INSIGHTS:
     
-       📊 Age:
+        Age:
           • Average: 48.99 | Median: 49.00
           • Standard Deviation: 18.04
           • Coefficient of Variation: 36.8% (Moderate variability)
-          ✅ Approximately symmetric distribution
+           Approximately symmetric distribution
     
-       📊 Rating:
+        Rating:
           • Average: 3.09 | Median: 3.00
           • Standard Deviation: 1.22
           • Coefficient of Variation: 39.6% (Moderate variability)
-          ✅ Approximately symmetric distribution
+           Approximately symmetric distribution
     
-       📊 Total Price:
+        Total Price:
           • Average: 3180.13 | Median: 2534.49
           • Standard Deviation: 2544.98
           • Coefficient of Variation: 80.0% (High variability)
           ⚠️  Right-skewed distribution (mean > median)
     
-       📊 Unit Price:
+        Unit Price:
           • Average: 578.63 | Median: 463.96
           • Standard Deviation: 312.27
           • Coefficient of Variation: 54.0% (High variability)
           ⚠️  Right-skewed distribution (mean > median)
     
-       📊 Quantity:
+        Quantity:
           • Average: 5.49 | Median: 5.00
           • Standard Deviation: 2.87
           • Coefficient of Variation: 52.3% (High variability)
-          ✅ Approximately symmetric distribution
+           Approximately symmetric distribution
     
-       📊 Add-on Total:
+        Add-on Total:
           • Average: 62.24 | Median: 51.70
           • Standard Deviation: 58.06
           • Coefficient of Variation: 93.3% (High variability)
@@ -504,7 +504,7 @@ for col in analysis_cols:
 
 ```python
 # Step 2.3: Analyze distribution shape (skewness & kurtosis)
-print("✅ Step 2.3 COMPLETED: Distribution Shape Analysis")
+print(" Step 2.3 COMPLETED: Distribution Shape Analysis")
 print("=" * 70)
 
 # Calculate skewness and kurtosis for all numeric columns
@@ -516,7 +516,7 @@ shape_stats = pd.DataFrame({
     'Kurtosis': df[numeric_cols].kurt(),
 }).round(3)
 
-print("📊 DISTRIBUTION SHAPE METRICS:")
+print(" DISTRIBUTION SHAPE METRICS:")
 display(shape_stats)
 
 print("\n🔍 DISTRIBUTION INTERPRETATION:")
@@ -533,7 +533,7 @@ for col in numeric_cols:
     # Skewness interpretation
     if abs(skew_val) < 0.5:
         skew_desc = "Approximately symmetric"
-        skew_icon = "✅"
+        skew_icon = ""
     elif skew_val > 0.5:
         if skew_val > 1:
             skew_desc = "Highly right-skewed (long tail to the right)"
@@ -554,7 +554,7 @@ for col in numeric_cols:
     # Kurtosis interpretation
     if abs(kurt_val) < 0.5:
         kurt_desc = "Normal tail thickness"
-        kurt_icon = "✅"
+        kurt_icon = ""
     elif kurt_val > 0.5:
         if kurt_val > 3:
             kurt_desc = "Very heavy tails (many outliers expected)"
@@ -578,12 +578,12 @@ if high_skew_cols:
 if moderate_skew_cols:
     print(f"   🟡 Moderate skewness (monitor during modeling): {moderate_skew_cols}")
 if not high_skew_cols and not moderate_skew_cols:
-    print(f"   ✅ All distributions are reasonably symmetric")
+    print(f"    All distributions are reasonably symmetric")
 ```
 
-    ✅ Step 2.3 COMPLETED: Distribution Shape Analysis
+     Step 2.3 COMPLETED: Distribution Shape Analysis
     ======================================================================
-    📊 DISTRIBUTION SHAPE METRICS:
+     DISTRIBUTION SHAPE METRICS:
     
 
 
@@ -678,40 +678,40 @@ if not high_skew_cols and not moderate_skew_cols:
     🔍 DISTRIBUTION INTERPRETATION:
     
        📈 Age:
-          • Skewness: 0.003 ✅ Approximately symmetric
+          • Skewness: 0.003  Approximately symmetric
           • Kurtosis: -1.192 📉 Light tails (fewer outliers)
     
        📈 Rating:
-          • Skewness: 0.133 ✅ Approximately symmetric
+          • Skewness: 0.133  Approximately symmetric
           • Kurtosis: -0.791 📉 Light tails (fewer outliers)
     
        📈 Total Price:
           • Skewness: 0.904 🔶 Moderately right-skewed
-          • Kurtosis: 0.289 ✅ Normal tail thickness
+          • Kurtosis: 0.289  Normal tail thickness
     
        📈 Unit Price:
-          • Skewness: -0.027 ✅ Approximately symmetric
+          • Skewness: -0.027  Approximately symmetric
           • Kurtosis: -0.708 📉 Light tails (fewer outliers)
     
        📈 Quantity:
-          • Skewness: 0.002 ✅ Approximately symmetric
+          • Skewness: 0.002  Approximately symmetric
           • Kurtosis: -1.227 📉 Light tails (fewer outliers)
     
        📈 Add-on Total:
           • Skewness: 0.937 🔶 Moderately right-skewed
-          • Kurtosis: 0.393 ✅ Normal tail thickness
+          • Kurtosis: 0.393  Normal tail thickness
     
     💡 TRANSFORMATION RECOMMENDATIONS:
        🟡 Moderate skewness (monitor during modeling): ['Total Price', 'Add-on Total']
     
 
-## 📊 Step 2.4: Visualize Numeric Distributions
+##  Step 2.4: Visualize Numeric Distributions
 **Goal**: Create histograms and boxplots to visualize distributions and identify outliers
 
 
 ```python
 # Step 2.4A: Create enhanced histograms with KDE overlays for all numeric features
-print("✅ Step 2.4A: Enhanced Histogram Distributions with KDE")
+print(" Step 2.4A: Enhanced Histogram Distributions with KDE")
 print("=" * 60)
 
 # Exclude Customer ID from visualization (it's just an identifier)
@@ -798,13 +798,13 @@ if len(available_price_cols) >= 2:
     save_figure(fig, 'price_family_comparative_distributions', 'distributions')
     plt.show()
     
-    print(f"📊 Created comparative price family analysis for {len(available_price_cols)} price features")
+    print(f" Created comparative price family analysis for {len(available_price_cols)} price features")
 
-print(f"\n📊 Created enhanced histograms with KDE overlays for {len(viz_cols)} numerical features")
+print(f"\n Created enhanced histograms with KDE overlays for {len(viz_cols)} numerical features")
 print("💡 KDE overlays show smooth distribution shapes for better pattern recognition")
 ```
 
-    ✅ Step 2.4A: Enhanced Histogram Distributions with KDE
+     Step 2.4A: Enhanced Histogram Distributions with KDE
     ============================================================
     💾 Saved: figures/distributions/numeric_distributions_histograms_kde.png
     💾 Saved: figures/distributions/numeric_distributions_histograms_kde.png
@@ -829,16 +829,16 @@ print("💡 KDE overlays show smooth distribution shapes for better pattern reco
     
 
 
-    📊 Created comparative price family analysis for 3 price features
+     Created comparative price family analysis for 3 price features
     
-    📊 Created enhanced histograms with KDE overlays for 6 numerical features
+     Created enhanced histograms with KDE overlays for 6 numerical features
     💡 KDE overlays show smooth distribution shapes for better pattern recognition
     
 
 
 ```python
 # Step 2.4B: Create boxplots for outlier detection
-print("✅ Step 2.4B: Boxplot Analysis for Outlier Detection")
+print(" Step 2.4B: Boxplot Analysis for Outlier Detection")
 print("=" * 55)
 
 # Create boxplots
@@ -880,10 +880,10 @@ plt.tight_layout()
 save_figure(fig, 'numeric_distributions_boxplots', 'outliers')
 plt.show()
 
-print(f"📊 Created boxplots for {len(viz_cols)} numerical features")
+print(f" Created boxplots for {len(viz_cols)} numerical features")
 ```
 
-    ✅ Step 2.4B: Boxplot Analysis for Outlier Detection
+     Step 2.4B: Boxplot Analysis for Outlier Detection
     =======================================================
     💾 Saved: figures/outliers/numeric_distributions_boxplots.png
     💾 Saved: figures/outliers/numeric_distributions_boxplots.png
@@ -895,7 +895,7 @@ print(f"📊 Created boxplots for {len(viz_cols)} numerical features")
     
 
 
-    📊 Created boxplots for 6 numerical features
+     Created boxplots for 6 numerical features
     
 
 ## ⚖️ Step 2.4C: Categorical Feature Balance Analysis
@@ -904,7 +904,7 @@ print(f"📊 Created boxplots for {len(viz_cols)} numerical features")
 
 ```python
 # Step 2.4C: Categorical Feature Balance Analysis
-print("✅ Step 2.4C COMPLETED: Categorical Feature Balance Analysis")
+print(" Step 2.4C COMPLETED: Categorical Feature Balance Analysis")
 print("=" * 70)
 
 print("🧩 WHAT BALANCE MEANS:")
@@ -924,7 +924,7 @@ missing_features = [col for col in balance_features if col not in df.columns]
 if missing_features:
     print(f"⚠️  Missing features: {missing_features}")
 
-print(f"\n📊 ANALYZING BALANCE IN {len(available_features)} CATEGORICAL FEATURES:")
+print(f"\n ANALYZING BALANCE IN {len(available_features)} CATEGORICAL FEATURES:")
 print(f"   Features: {', '.join(available_features)}")
 
 # Create balance summary
@@ -934,7 +934,7 @@ print(f"\n📈 FEATURE BALANCE DISTRIBUTIONS:")
 print("=" * 50)
 
 for col in available_features:
-    print(f"\n📊 {col.upper()} DISTRIBUTION:")
+    print(f"\n {col.upper()} DISTRIBUTION:")
     
     # Calculate value counts and percentages
     counts = df[col].value_counts()
@@ -955,7 +955,7 @@ for col in available_features:
     
     # Determine balance status
     if max_pct <= 60:
-        balance_status = "✅ Balanced"
+        balance_status = " Balanced"
         balance_color = "green" 
         action_needed = "No action needed"
     elif max_pct <= 70:
@@ -972,7 +972,7 @@ for col in available_features:
         action_needed = "Use balancing during preprocessing"
     
     print(f"   📋 Balance Assessment: {balance_status}")
-    print(f"   📊 Dominant class: {max_pct:.1f}% | Minority class: {min_pct:.1f}%")
+    print(f"    Dominant class: {max_pct:.1f}% | Minority class: {min_pct:.1f}%")
     print(f"   🎯 Recommendation: {action_needed}")
     
     # Store in summary
@@ -990,7 +990,7 @@ print(f"\n📋 BALANCE SUMMARY TABLE:")
 display(balance_summary.round(2))
 ```
 
-    ✅ Step 2.4C COMPLETED: Categorical Feature Balance Analysis
+     Step 2.4C COMPLETED: Categorical Feature Balance Analysis
     ======================================================================
     🧩 WHAT BALANCE MEANS:
        • Checking if some categories dominate others
@@ -998,13 +998,13 @@ display(balance_summary.round(2))
        • Ensures fair evaluation and interpretation
        • Helps decide whether to resample later (SMOTE, undersampling, etc.)
     
-    📊 ANALYZING BALANCE IN 6 CATEGORICAL FEATURES:
+     ANALYZING BALANCE IN 6 CATEGORICAL FEATURES:
        Features: Gender, Loyalty Member, Order Status, Payment Method, Shipping Type, Product Type
     
     📈 FEATURE BALANCE DISTRIBUTIONS:
     ==================================================
     
-    📊 GENDER DISTRIBUTION:
+     GENDER DISTRIBUTION:
     
 
 
@@ -1051,11 +1051,11 @@ display(balance_summary.round(2))
 </div>
 
 
-       📋 Balance Assessment: ✅ Balanced
-       📊 Dominant class: 50.8% | Minority class: 49.2%
+       📋 Balance Assessment:  Balanced
+        Dominant class: 50.8% | Minority class: 49.2%
        🎯 Recommendation: No action needed
     
-    📊 LOYALTY MEMBER DISTRIBUTION:
+     LOYALTY MEMBER DISTRIBUTION:
     
 
 
@@ -1103,10 +1103,10 @@ display(balance_summary.round(2))
 
 
        📋 Balance Assessment: ⚠️ Moderate imbalance
-       📊 Dominant class: 78.3% | Minority class: 21.7%
+        Dominant class: 78.3% | Minority class: 21.7%
        🎯 Recommendation: Consider balancing techniques
     
-    📊 ORDER STATUS DISTRIBUTION:
+     ORDER STATUS DISTRIBUTION:
     
 
 
@@ -1154,10 +1154,10 @@ display(balance_summary.round(2))
 
 
        📋 Balance Assessment: 🟡 Mild imbalance
-       📊 Dominant class: 67.2% | Minority class: 32.8%
+        Dominant class: 67.2% | Minority class: 32.8%
        🎯 Recommendation: Monitor model bias
     
-    📊 PAYMENT METHOD DISTRIBUTION:
+     PAYMENT METHOD DISTRIBUTION:
     
 
 
@@ -1224,11 +1224,11 @@ display(balance_summary.round(2))
 </div>
 
 
-       📋 Balance Assessment: ✅ Balanced
-       📊 Dominant class: 29.3% | Minority class: 12.3%
+       📋 Balance Assessment:  Balanced
+        Dominant class: 29.3% | Minority class: 12.3%
        🎯 Recommendation: No action needed
     
-    📊 SHIPPING TYPE DISTRIBUTION:
+     SHIPPING TYPE DISTRIBUTION:
     
 
 
@@ -1290,11 +1290,11 @@ display(balance_summary.round(2))
 </div>
 
 
-       📋 Balance Assessment: ✅ Balanced
-       📊 Dominant class: 33.6% | Minority class: 16.4%
+       📋 Balance Assessment:  Balanced
+        Dominant class: 33.6% | Minority class: 16.4%
        🎯 Recommendation: No action needed
     
-    📊 PRODUCT TYPE DISTRIBUTION:
+     PRODUCT TYPE DISTRIBUTION:
     
 
 
@@ -1356,8 +1356,8 @@ display(balance_summary.round(2))
 </div>
 
 
-       📋 Balance Assessment: ✅ Balanced
-       📊 Dominant class: 29.9% | Minority class: 10.1%
+       📋 Balance Assessment:  Balanced
+        Dominant class: 29.9% | Minority class: 10.1%
        🎯 Recommendation: No action needed
     
     📋 BALANCE SUMMARY TABLE:
@@ -1460,7 +1460,7 @@ display(balance_summary.round(2))
 
 ```python
 # Step 2.4C: Visualize categorical feature balance with bar plots
-print("📊 CREATING BALANCE VISUALIZATIONS:")
+print(" CREATING BALANCE VISUALIZATIONS:")
 print("   • Bar plots for count distributions")
 print("   • Color-coded by balance status")
 
@@ -1509,7 +1509,7 @@ for i, col in enumerate(available_features):
     # Add balance status as subtitle
     max_pct = percentages.max()
     if max_pct <= 60:
-        status_text = "✅ Balanced"
+        status_text = " Balanced"
     elif max_pct <= 70:
         status_text = "🟡 Mild Imbalance"
     elif max_pct <= 80:
@@ -1531,10 +1531,10 @@ plt.tight_layout()
 save_figure(fig, 'categorical_balance_barplots', 'distributions')
 plt.show()
 
-print(f"📊 Created bar plots for {len(available_features)} categorical features")
+print(f" Created bar plots for {len(available_features)} categorical features")
 ```
 
-    📊 CREATING BALANCE VISUALIZATIONS:
+     CREATING BALANCE VISUALIZATIONS:
        • Bar plots for count distributions
        • Color-coded by balance status
     💾 Saved: figures/distributions/categorical_balance_barplots.png
@@ -1547,7 +1547,7 @@ print(f"📊 Created bar plots for {len(available_features)} categorical feature
     
 
 
-    📊 Created bar plots for 6 categorical features
+     Created bar plots for 6 categorical features
     
 
 
@@ -1564,8 +1564,8 @@ moderate_imbalance = balance_summary[(balance_summary['Dominant_Class_Pct'] > 70
                                    (balance_summary['Dominant_Class_Pct'] <= 80)]['Feature'].tolist()
 strong_imbalance = balance_summary[balance_summary['Dominant_Class_Pct'] > 80]['Feature'].tolist()
 
-print("📊 BALANCE STATUS SUMMARY:")
-print(f"   ✅ Balanced features ({len(balanced_features)}): {', '.join(balanced_features) if balanced_features else 'None'}")
+print(" BALANCE STATUS SUMMARY:")
+print(f"    Balanced features ({len(balanced_features)}): {', '.join(balanced_features) if balanced_features else 'None'}")
 print(f"   🟡 Mild imbalance ({len(mild_imbalance)}): {', '.join(mild_imbalance) if mild_imbalance else 'None'}")
 print(f"   ⚠️ Moderate imbalance ({len(moderate_imbalance)}): {', '.join(moderate_imbalance) if moderate_imbalance else 'None'}")
 print(f"   🚨 Strong imbalance ({len(strong_imbalance)}): {', '.join(strong_imbalance) if strong_imbalance else 'None'}")
@@ -1583,7 +1583,7 @@ chi_results = {}
 
 for feature in key_features:
     if feature in df.columns:
-        print(f"\n📊 Testing: {feature}")
+        print(f"\n Testing: {feature}")
         print("-" * 30)
         
         # Get observed frequencies
@@ -1658,7 +1658,7 @@ if 'Add-ons Purchased' in df.columns:
     addon_category_counts = df['Add_on_Category'].value_counts()
     addon_category_pct = df['Add_on_Category'].value_counts(normalize=True) * 100
     
-    print("📊 Grouped Add-on Categories:")
+    print(" Grouped Add-on Categories:")
     for category, count in addon_category_counts.items():
         pct = addon_category_pct[category]
         print(f"   • {category}: {count:,} ({pct:.1f}%)")
@@ -1707,7 +1707,7 @@ for feature in available_features:
         
         # Assessment
         if top_percentage <= 60:
-            assessment = "✅ Matches expectations - well balanced"
+            assessment = " Matches expectations - well balanced"
         elif top_percentage <= 70:
             assessment = "🟡 Slightly more concentrated than expected"
         elif top_percentage <= 80:
@@ -1738,7 +1738,7 @@ if mild_imbalance:
     print(f"      → Check confusion matrices for bias")
 
 if balanced_features:
-    print(f"   ✅ GOOD: {', '.join(balanced_features)} are well-balanced")
+    print(f"    GOOD: {', '.join(balanced_features)} are well-balanced")
     print(f"      → No special treatment needed")
     print(f"      → Good candidates for feature importance analysis")
 
@@ -1784,14 +1784,14 @@ print(f"   • Use these charts for stakeholder presentations and model document
 if 'Has_AddOn' in df.columns:
     df.drop('Has_AddOn', axis=1, inplace=True, errors='ignore')
     
-print(f"\n✅ Step 2.4C COMPLETED: Categorical balance analysis finished")
+print(f"\n Step 2.4C COMPLETED: Categorical balance analysis finished")
 print(f"🎯 Key finding: {len(strong_imbalance + moderate_imbalance)} features need attention in preprocessing")
 ```
 
     💡 ENHANCED BALANCE ANALYSIS WITH STATISTICAL SIGNIFICANCE
     ===========================================================================
-    📊 BALANCE STATUS SUMMARY:
-       ✅ Balanced features (4): Gender, Payment Method, Shipping Type, Product Type
+     BALANCE STATUS SUMMARY:
+        Balanced features (4): Gender, Payment Method, Shipping Type, Product Type
        🟡 Mild imbalance (1): Order Status
        ⚠️ Moderate imbalance (1): Loyalty Member
        🚨 Strong imbalance (0): None
@@ -1800,7 +1800,7 @@ print(f"🎯 Key finding: {len(strong_imbalance + moderate_imbalance)} features 
     ==================================================
     Testing whether imbalances are statistically significant vs uniform distribution
     
-    📊 Testing: Gender
+     Testing: Gender
     ------------------------------
        Categories: ['Male', 'Female']
        Observed: [10164  9835]
@@ -1810,7 +1810,7 @@ print(f"🎯 Key finding: {len(strong_imbalance + moderate_imbalance)} features 
        Result: 🔴 SIGNIFICANT (α = 0.05)
        Interpretation: Imbalance is statistically significant
     
-    📊 Testing: Loyalty Member
+     Testing: Loyalty Member
     ------------------------------
        Categories: ['No', 'Yes']
        Observed: [15657  4343]
@@ -1820,7 +1820,7 @@ print(f"🎯 Key finding: {len(strong_imbalance + moderate_imbalance)} features 
        Result: 🔴 SIGNIFICANT (α = 0.05)
        Interpretation: Imbalance is statistically significant
     
-    📊 Testing: Payment Method
+     Testing: Payment Method
     ------------------------------
        Categories: ['Credit Card', 'Bank Transfer', 'PayPal', 'Paypal', 'Cash', 'Debit Card']
        Observed: [5868 3371 3284 2514 2492 2471]
@@ -1830,7 +1830,7 @@ print(f"🎯 Key finding: {len(strong_imbalance + moderate_imbalance)} features 
        Result: 🔴 SIGNIFICANT (α = 0.05)
        Interpretation: Imbalance is statistically significant
     
-    📊 Testing: Order Status
+     Testing: Order Status
     ------------------------------
        Categories: ['Completed', 'Cancelled']
        Observed: [13432  6568]
@@ -1843,7 +1843,7 @@ print(f"🎯 Key finding: {len(strong_imbalance + moderate_imbalance)} features 
     🏷️ ADD-ON CATEGORIZATION ANALYSIS
     ========================================
     Original Add-ons: 75 unique values
-    📊 Grouped Add-on Categories:
+     Grouped Add-on Categories:
        • Warranty/Protection: 7,971 (39.9%)
        • Other Add-ons: 7,161 (35.8%)
        • None: 4,868 (24.3%)
@@ -1858,7 +1858,7 @@ print(f"🎯 Key finding: {len(strong_imbalance + moderate_imbalance)} features 
        📈 Gender:
           Expected: ~50/50 M/F ratio (realistic demographic)
           Actual: Male dominates with 50.8% of records
-          Assessment: ✅ Matches expectations - well balanced
+          Assessment:  Matches expectations - well balanced
     
        📈 Loyalty Member:
           Expected: ~60% No / 40% Yes (normal loyalty pattern)
@@ -1873,17 +1873,17 @@ print(f"🎯 Key finding: {len(strong_imbalance + moderate_imbalance)} features 
        📈 Payment Method:
           Expected: Diverse distribution across Credit Card, Cash, PayPal
           Actual: Credit Card dominates with 29.3% of records
-          Assessment: ✅ Matches expectations - well balanced
+          Assessment:  Matches expectations - well balanced
     
        📈 Shipping Type:
           Expected: Majority Standard/Overnight (normal preference)
           Actual: Standard dominates with 33.6% of records
-          Assessment: ✅ Matches expectations - well balanced
+          Assessment:  Matches expectations - well balanced
     
        📈 Product Type:
           Expected: Balanced between 4-5 product categories
           Actual: Smartphone dominates with 29.9% of records
-          Assessment: ✅ Matches expectations - well balanced
+          Assessment:  Matches expectations - well balanced
     
     🛠️ PREPROCESSING RECOMMENDATIONS:
        ⚠️ MODERATE: Consider balancing Loyalty Member
@@ -1893,7 +1893,7 @@ print(f"🎯 Key finding: {len(strong_imbalance + moderate_imbalance)} features 
        🟡 MILD: Monitor Order Status during modeling
           → Use stratified cross-validation
           → Check confusion matrices for bias
-       ✅ GOOD: Gender, Payment Method, Shipping Type, Product Type are well-balanced
+        GOOD: Gender, Payment Method, Shipping Type, Product Type are well-balanced
           → No special treatment needed
           → Good candidates for feature importance analysis
     
@@ -1912,17 +1912,17 @@ print(f"🎯 Key finding: {len(strong_imbalance + moderate_imbalance)} features 
        • Bar plots: figures/distributions/categorical_balance_barplots.png
        • Use these charts for stakeholder presentations and model documentation
     
-    ✅ Step 2.4C COMPLETED: Categorical balance analysis finished
+     Step 2.4C COMPLETED: Categorical balance analysis finished
     🎯 Key finding: 1 features need attention in preprocessing
     
 
-## ✅ Step 2.5: Validate Logical Relationships
+##  Step 2.5: Validate Logical Relationships
 **Goal**: Check if Total Price = Unit Price × Quantity + Add-on Total (data consistency)
 
 
 ```python
 # Step 2.5: Validate logical relationships
-print("✅ Step 2.5 COMPLETED: Logical Relationship Validation")
+print(" Step 2.5 COMPLETED: Logical Relationship Validation")
 print("=" * 60)
 
 # Check if Total Price = Unit Price × Quantity + Add-on Total
@@ -1944,7 +1944,7 @@ df["relative_error_%"] = (
 
 # Summarize error statistics for the entire dataset
 error_stats = df["relative_error_%"].describe()[["mean", "50%", "max"]].round(2)
-print("\n📊 Relative Error Summary (%) - ALL RECORDS:")
+print("\n Relative Error Summary (%) - ALL RECORDS:")
 print(f"Average Error: {error_stats['mean']}%")
 print(f"Median Error: {error_stats['50%']}%")
 print(f"Maximum Error: {error_stats['max']}%")
@@ -1960,7 +1960,7 @@ plt.grid(True, alpha=0.3)
 save_figure(plt.gcf(), 'all_records_relative_error_distribution', 'statistics')
 plt.show()
 
-print(f"📊 VALIDATION RESULTS:")
+print(f" VALIDATION RESULTS:")
 print(f"   • Total records: {len(df):,}")
 print(f"   • Valid price calculations: {len(df) - len(invalid_rows):,}")
 print(f"   • Invalid price calculations: {len(invalid_rows):,}")
@@ -1983,7 +1983,7 @@ if len(invalid_rows) > 0:
     
     print(f"   • Assessment: {error_assessment}")
 else:
-    print(f"\n✅ NO ERROR SEVERITY ANALYSIS NEEDED: All calculations are correct!")
+    print(f"\n NO ERROR SEVERITY ANALYSIS NEEDED: All calculations are correct!")
 
 if len(invalid_rows) > 0:
     print(f"\n⚠️  INVALID RECORDS DETECTED:")
@@ -2011,7 +2011,7 @@ if len(invalid_rows) > 0:
     save_figure(fig, 'price_discrepancy_distribution', 'statistics')
     plt.show()
     
-    print(f"\n📊 DISCREPANCY PATTERN ANALYSIS:")
+    print(f"\n DISCREPANCY PATTERN ANALYSIS:")
     # Check if errors are consistent (systematic) or random
     error_std = invalid_rows['Relative_Error'].std()
     error_range = invalid_rows['Relative_Error'].max() - invalid_rows['Relative_Error'].min()
@@ -2042,7 +2042,7 @@ if len(invalid_rows) > 0:
             print(f"     - {product}: {count} ({percentage:.1f}%)")
             
 else:
-    print(f"\n✅ EXCELLENT! All price calculations are mathematically correct!")
+    print(f"\n EXCELLENT! All price calculations are mathematically correct!")
 
 # Additional logical checks
 print(f"\n🔍 ADDITIONAL LOGICAL CHECKS:")
@@ -2056,7 +2056,7 @@ negative_checks = {
 }
 
 for field, neg_count in negative_checks.items():
-    status = "❌" if neg_count > 0 else "✅"
+    status = "❌" if neg_count > 0 else ""
     print(f"   • Negative {field}: {neg_count} records {status}")
 
 # Check for zero values (might be valid but worth noting)
@@ -2066,7 +2066,7 @@ zero_checks = {
     'Total Price': (df['Total Price'] == 0).sum()
 }
 
-print(f"\n📊 ZERO VALUE ANALYSIS:")
+print(f"\n ZERO VALUE ANALYSIS:")
 for field, zero_count in zero_checks.items():
     percentage = (zero_count / len(df)) * 100
     print(f"   • Zero {field}: {zero_count} records ({percentage:.2f}%)")
@@ -2083,11 +2083,11 @@ print(f"   • Maximum quantity: {df['Quantity'].max()}")
 df.drop(['Computed_Total', 'Price_Difference', 'Relative_Error', 'relative_error_%'], axis=1, inplace=True, errors='ignore')
 ```
 
-    ✅ Step 2.5 COMPLETED: Logical Relationship Validation
+     Step 2.5 COMPLETED: Logical Relationship Validation
     ============================================================
     🧮 VALIDATING: Total Price = Unit Price × Quantity + Add-on Total
     
-    📊 Relative Error Summary (%) - ALL RECORDS:
+     Relative Error Summary (%) - ALL RECORDS:
     Average Error: 9.17%
     Median Error: 1.82%
     Maximum Error: 688.0%
@@ -2101,7 +2101,7 @@ df.drop(['Computed_Total', 'Price_Difference', 'Relative_Error', 'relative_error
     
 
 
-    📊 VALIDATION RESULTS:
+     VALIDATION RESULTS:
        • Total records: 20,000
        • Valid price calculations: 4,868
        • Invalid price calculations: 15,132
@@ -2126,7 +2126,7 @@ df.drop(['Computed_Total', 'Price_Difference', 'Relative_Error', 'relative_error
 
 
     
-    📊 DISCREPANCY PATTERN ANALYSIS:
+     DISCREPANCY PATTERN ANALYSIS:
        • Error pattern: Random/varied errors
        • Error std deviation: 37.46%
        • Error range: 687.94%
@@ -2234,12 +2234,12 @@ df.drop(['Computed_Total', 'Price_Difference', 'Relative_Error', 'relative_error
          - Headphones: 1528 (10.1%)
     
     🔍 ADDITIONAL LOGICAL CHECKS:
-       • Negative Unit Price: 0 records ✅
-       • Negative Quantity: 0 records ✅
-       • Negative Total Price: 0 records ✅
-       • Negative Add-on Total: 0 records ✅
+       • Negative Unit Price: 0 records 
+       • Negative Quantity: 0 records 
+       • Negative Total Price: 0 records 
+       • Negative Add-on Total: 0 records 
     
-    📊 ZERO VALUE ANALYSIS:
+     ZERO VALUE ANALYSIS:
        • Zero Unit Price: 0 records (0.00%)
        • Zero Quantity: 0 records (0.00%)
        • Zero Total Price: 0 records (0.00%)
@@ -2256,7 +2256,7 @@ df.drop(['Computed_Total', 'Price_Difference', 'Relative_Error', 'relative_error
 
 ```python
 # Step 2.6: Identify potential outliers using multiple methods
-print("✅ Step 2.6 COMPLETED: Outlier Detection Analysis")
+print(" Step 2.6 COMPLETED: Outlier Detection Analysis")
 print("=" * 60)
 
 outlier_summary = pd.DataFrame()
@@ -2268,7 +2268,7 @@ print("   2. Z-Score Method (|z| > 3)")
 print("   3. Modified Z-Score Method (|modified z| > 3.5)")
 
 for col in viz_cols:  # Exclude Customer ID
-    print(f"\n📊 ANALYZING OUTLIERS IN: {col}")
+    print(f"\n ANALYZING OUTLIERS IN: {col}")
     print("-" * 40)
     
     col_data = df[col].dropna()
@@ -2293,7 +2293,7 @@ for col in viz_cols:  # Exclude Customer ID
     z_outliers = df[np.abs(stats.zscore(df[col].fillna(df[col].median()))) > 3]
     z_outlier_count = len(z_outliers)
     
-    print(f"   📊 Z-Score Method (|z| > 3):")
+    print(f"    Z-Score Method (|z| > 3):")
     print(f"      • Outliers: {z_outlier_count} ({(z_outlier_count/len(df))*100:.2f}%)")
     
     # Method 3: Modified Z-Score Method
@@ -2355,75 +2355,75 @@ for feature, details in outlier_details.items():
     print(f"   • {feature}: {details['top_3_values']} (bounds: {details['bounds'][0]:.2f}-{details['bounds'][1]:.2f})")
 ```
 
-    ✅ Step 2.6 COMPLETED: Outlier Detection Analysis
+     Step 2.6 COMPLETED: Outlier Detection Analysis
     ============================================================
     🎯 OUTLIER DETECTION METHODS:
        1. IQR Method (1.5 × IQR rule)
        2. Z-Score Method (|z| > 3)
        3. Modified Z-Score Method (|modified z| > 3.5)
     
-    📊 ANALYZING OUTLIERS IN: Age
+     ANALYZING OUTLIERS IN: Age
     ----------------------------------------
        📈 IQR Method:
           • Q1: 33.00 | Q3: 65.00 | IQR: 32.00
           • Bounds: [-15.00, 113.00]
           • Outliers: 0 (0.00%)
-       📊 Z-Score Method (|z| > 3):
+        Z-Score Method (|z| > 3):
           • Outliers: 0 (0.00%)
        📉 Modified Z-Score Method (|mod_z| > 3.5):
           • Outliers: 0 (0.00%)
     
-    📊 ANALYZING OUTLIERS IN: Rating
+     ANALYZING OUTLIERS IN: Rating
     ----------------------------------------
        📈 IQR Method:
           • Q1: 2.00 | Q3: 4.00 | IQR: 2.00
           • Bounds: [-1.00, 7.00]
           • Outliers: 0 (0.00%)
-       📊 Z-Score Method (|z| > 3):
+        Z-Score Method (|z| > 3):
           • Outliers: 0 (0.00%)
        📉 Modified Z-Score Method (|mod_z| > 3.5):
           • Outliers: 0 (0.00%)
     
-    📊 ANALYZING OUTLIERS IN: Total Price
+     ANALYZING OUTLIERS IN: Total Price
     ----------------------------------------
        📈 IQR Method:
           • Q1: 1139.68 | Q3: 4639.60 | IQR: 3499.92
           • Bounds: [-4110.20, 9889.48]
           • Outliers: 383 (1.92%)
-       📊 Z-Score Method (|z| > 3):
+        Z-Score Method (|z| > 3):
           • Outliers: 200 (1.00%)
        📉 Modified Z-Score Method (|mod_z| > 3.5):
           • Outliers: 200 (1.00%)
     
-    📊 ANALYZING OUTLIERS IN: Unit Price
+     ANALYZING OUTLIERS IN: Unit Price
     ----------------------------------------
        📈 IQR Method:
           • Q1: 361.18 | Q3: 791.19 | IQR: 430.01
           • Bounds: [-283.84, 1436.21]
           • Outliers: 0 (0.00%)
-       📊 Z-Score Method (|z| > 3):
+        Z-Score Method (|z| > 3):
           • Outliers: 0 (0.00%)
        📉 Modified Z-Score Method (|mod_z| > 3.5):
           • Outliers: 0 (0.00%)
     
-    📊 ANALYZING OUTLIERS IN: Quantity
+     ANALYZING OUTLIERS IN: Quantity
     ----------------------------------------
        📈 IQR Method:
           • Q1: 3.00 | Q3: 8.00 | IQR: 5.00
           • Bounds: [-4.50, 15.50]
           • Outliers: 0 (0.00%)
-       📊 Z-Score Method (|z| > 3):
+        Z-Score Method (|z| > 3):
           • Outliers: 0 (0.00%)
        📉 Modified Z-Score Method (|mod_z| > 3.5):
           • Outliers: 0 (0.00%)
     
-    📊 ANALYZING OUTLIERS IN: Add-on Total
+     ANALYZING OUTLIERS IN: Add-on Total
     ----------------------------------------
        📈 IQR Method:
           • Q1: 7.62 | Q3: 93.84 | IQR: 86.23
           • Bounds: [-121.73, 223.18]
           • Outliers: 248 (1.24%)
-       📊 Z-Score Method (|z| > 3):
+        Z-Score Method (|z| > 3):
           • Outliers: 147 (0.73%)
        📉 Modified Z-Score Method (|mod_z| > 3.5):
           • Outliers: 9 (0.04%)
@@ -2537,20 +2537,20 @@ for feature, details in outlier_details.items():
        • Add-on Total: [292.77, 285.72, 284.01] (bounds: -121.73-223.18)
     
 
-## 📊 Step 2.7A: Numerical Correlation Analysis
+##  Step 2.7A: Numerical Correlation Analysis
 **Goal**: Understand relationships between numerical features
 
 
 ```python
 # Step 2.7A: Enhanced Correlation Analysis with Pairplots
-print("✅ Step 2.7A COMPLETED: Enhanced Numerical Correlation Analysis")
+print(" Step 2.7A COMPLETED: Enhanced Numerical Correlation Analysis")
 print("=" * 70)
 
 # Calculate correlation matrix (exclude Customer ID)
 corr_cols = [col for col in numeric_cols if col != 'Customer ID']
 correlation_matrix = df[corr_cols].corr()
 
-print("📊 CORRELATION MATRIX (rounded to 2 decimals):")
+print(" CORRELATION MATRIX (rounded to 2 decimals):")
 display(correlation_matrix.round(2))
 
 # Create enhanced correlation heatmap with better annotations
@@ -2620,11 +2620,11 @@ if moderate_correlations:
         print(f"      • {corr['Feature_1']} ↔ {corr['Feature_2']}: {corr['Correlation']:.2f} ({corr['Strength']} {direction})")
 
 if not strong_correlations and not moderate_correlations:
-    print("   ✅ No strong multicollinearity detected (all |r| ≤ 0.5)")
+    print("    No strong multicollinearity detected (all |r| ≤ 0.5)")
 
 # Create pairplot for strongest correlations
 if strong_correlations or moderate_correlations:
-    print(f"\n📊 PAIRPLOT FOR STRONGEST CORRELATIONS:")
+    print(f"\n PAIRPLOT FOR STRONGEST CORRELATIONS:")
     print("-" * 40)
     
     # Get pairs with strongest correlations (top 3)
@@ -2703,9 +2703,9 @@ print(f"\n📈 LINEARITY VALIDATION:")
 print("Pairplot above shows scatter plots with regression lines to validate linear relationships")
 ```
 
-    ✅ Step 2.7A COMPLETED: Enhanced Numerical Correlation Analysis
+     Step 2.7A COMPLETED: Enhanced Numerical Correlation Analysis
     ======================================================================
-    📊 CORRELATION MATRIX (rounded to 2 decimals):
+     CORRELATION MATRIX (rounded to 2 decimals):
     
 
 
@@ -2810,7 +2810,7 @@ print("Pairplot above shows scatter plots with regression lines to validate line
           • Total Price ↔ Unit Price: 0.67 (Moderate positive)
           • Total Price ↔ Quantity: 0.65 (Moderate positive)
     
-    📊 PAIRPLOT FOR STRONGEST CORRELATIONS:
+     PAIRPLOT FOR STRONGEST CORRELATIONS:
     ----------------------------------------
     Creating pairplot for top correlated features: Total Price, Quantity, Unit Price
     💾 Saved: figures/correlations/correlation_pairplot.png
@@ -2851,7 +2851,7 @@ print("Pairplot above shows scatter plots with regression lines to validate line
 
 ```python
 # Step 2.7B: Comprehensive Phase 2 Summary and Recommendations
-print("✅ Step 2.7B COMPLETED: Phase 2 Summary & Preprocessing Recommendations")
+print(" Step 2.7B COMPLETED: Phase 2 Summary & Preprocessing Recommendations")
 print("=" * 80)
 
 # Create comprehensive summary
@@ -2865,7 +2865,7 @@ summary_report = {
     'preprocessing_recommendations': []
 }
 
-print("📊 PHASE 2: DESCRIPTIVE STATISTICS - FINAL REPORT")
+print(" PHASE 2: DESCRIPTIVE STATISTICS - FINAL REPORT")
 print("=" * 50)
 
 print(f"🔢 DATASET OVERVIEW:")
@@ -2953,20 +2953,20 @@ print(f"   ⚖️  {rec}")
 # Data quality recommendations
 rec = "Validate and clean any price calculation discrepancies found"
 recommendations.append(rec)
-print(f"   ✅ {rec}")
+print(f"    {rec}")
 
 summary_report['preprocessing_recommendations'] = recommendations
 
 print(f"\n🎯 PHASE 2 COMPLETION STATUS:")
 completed_steps = [
-    "✅ Identified numerical columns",
-    "✅ Computed comprehensive statistics", 
-    "✅ Analyzed distribution shapes",
-    "✅ Created visualizations (histograms & boxplots)",
-    "✅ Validated logical relationships",
-    "✅ Detected outliers using multiple methods",
-    "✅ Analyzed correlations",
-    "✅ Generated preprocessing recommendations"
+    " Identified numerical columns",
+    " Computed comprehensive statistics", 
+    " Analyzed distribution shapes",
+    " Created visualizations (histograms & boxplots)",
+    " Validated logical relationships",
+    " Detected outliers using multiple methods",
+    " Analyzed correlations",
+    " Generated preprocessing recommendations"
 ]
 
 for step in completed_steps:
@@ -2986,12 +2986,12 @@ with open(summary_file, 'w') as f:
     json.dump(summary_report, f, indent=2, default=str)
 
 print(f"\n💾 Summary report saved to: {summary_file}")
-print(f"📊 All visualizations saved to outputs/figures/ subdirectories")
+print(f" All visualizations saved to outputs/figures/ subdirectories")
 ```
 
-    ✅ Step 2.7B COMPLETED: Phase 2 Summary & Preprocessing Recommendations
+     Step 2.7B COMPLETED: Phase 2 Summary & Preprocessing Recommendations
     ================================================================================
-    📊 PHASE 2: DESCRIPTIVE STATISTICS - FINAL REPORT
+     PHASE 2: DESCRIPTIVE STATISTICS - FINAL REPORT
     ==================================================
     🔢 DATASET OVERVIEW:
        • Total Records: 20,000
@@ -3021,17 +3021,17 @@ print(f"📊 All visualizations saved to outputs/figures/ subdirectories")
     
     💡 PREPROCESSING RECOMMENDATIONS FOR PHASE 3:
        ⚖️  Apply feature scaling (StandardScaler/MinMaxScaler) for ML algorithms
-       ✅ Validate and clean any price calculation discrepancies found
+        Validate and clean any price calculation discrepancies found
     
     🎯 PHASE 2 COMPLETION STATUS:
-       ✅ Identified numerical columns
-       ✅ Computed comprehensive statistics
-       ✅ Analyzed distribution shapes
-       ✅ Created visualizations (histograms & boxplots)
-       ✅ Validated logical relationships
-       ✅ Detected outliers using multiple methods
-       ✅ Analyzed correlations
-       ✅ Generated preprocessing recommendations
+        Identified numerical columns
+        Computed comprehensive statistics
+        Analyzed distribution shapes
+        Created visualizations (histograms & boxplots)
+        Validated logical relationships
+        Detected outliers using multiple methods
+        Analyzed correlations
+        Generated preprocessing recommendations
     
     🚀 READY FOR PHASE 3: DATA PREPROCESSING & CLEANING
        • Use insights from this analysis to inform cleaning decisions
@@ -3039,10 +3039,10 @@ print(f"📊 All visualizations saved to outputs/figures/ subdirectories")
        • Figures saved to: outputs/figures/distributions/, /statistics/, /correlations/, /outliers/
     
     💾 Summary report saved to: ..\..\outputs\reports\phase2_statistical_summary.json
-    📊 All visualizations saved to outputs/figures/ subdirectories
+     All visualizations saved to outputs/figures/ subdirectories
     
 
-## ✅ Phase 2 Complete
+##  Phase 2 Complete
 
 **Summary:**
 - Analyzed 20,000 electronics sales records

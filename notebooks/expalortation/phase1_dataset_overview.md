@@ -1,4 +1,4 @@
-# 📊 Phase 1: Data Overview - Electronics Sales Analysis
+#  Phase 1: Data Overview - Electronics Sales Analysis
 
 ## 🧩 Tasks Checklist:
 - [ ] **Step 1**: Load the data - Ensure it reads cleanly without encoding issues
@@ -29,11 +29,11 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.width', None)
 pd.set_option('display.max_colwidth', 50)
 
-print("✅ Libraries imported successfully!")
+print(" Libraries imported successfully!")
 print(f"📅 Analysis started on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 ```
 
-    ✅ Libraries imported successfully!
+     Libraries imported successfully!
     📅 Analysis started on: 2025-10-08 23:48:14
     
 
@@ -74,8 +74,8 @@ def save_figure(fig, filename, category='exploratory', formats=['png', 'pdf']):
         fig.savefig(filepath, format=fmt, dpi=300, bbox_inches='tight')
         print(f"💾 Saved: {filepath}")
 
-print("\n✅ Figure saving configuration complete!")
-print(f"📊 Main figures directory: {FIGURE_DIR.absolute()}")
+print("\n Figure saving configuration complete!")
+print(f" Main figures directory: {FIGURE_DIR.absolute()}")
 print(f"📈 Available categories: {list(FIGURE_SUBDIRS.keys())}")
 ```
 
@@ -85,8 +85,8 @@ print(f"📈 Available categories: {list(FIGURE_SUBDIRS.keys())}")
     📁 Created: ..\outputs\figures\model_performance
     📁 Created: ..\outputs\figures\business_insights
     
-    ✅ Figure saving configuration complete!
-    📊 Main figures directory: c:\Users\hatim\OneDrive\سطح المكتب\iau\25.26\Data_Mining\Project\DataMining\notebooks\..\outputs\figures
+     Figure saving configuration complete!
+     Main figures directory: c:\Users\hatim\OneDrive\سطح المكتب\iau\25.26\Data_Mining\Project\DataMining\notebooks\..\outputs\figures
     📈 Available categories: ['exploratory', 'correlations', 'distributions', 'model_performance', 'business_insights']
     
 
@@ -103,9 +103,9 @@ try:
     # Load the dataset
     df = pd.read_csv(data_path)
     
-    print("✅ Step 1 COMPLETED: Data loaded successfully!")
+    print(" Step 1 COMPLETED: Data loaded successfully!")
     print(f"📄 File path: {data_path}")
-    print(f"📊 Initial data loaded: {len(df)} records")
+    print(f" Initial data loaded: {len(df)} records")
     
 except FileNotFoundError:
     print("❌ Error: CSV file not found. Check the file path.")
@@ -113,16 +113,16 @@ except UnicodeDecodeError:
     print("⚠️  Encoding issue detected. Trying with different encoding...")
     try:
         df = pd.read_csv(data_path, encoding='latin-1')
-        print("✅ Data loaded with latin-1 encoding")
+        print(" Data loaded with latin-1 encoding")
     except:
         print("❌ Failed to load with alternative encoding")
 except Exception as e:
     print(f"❌ Unexpected error: {e}")
 ```
 
-    ✅ Step 1 COMPLETED: Data loaded successfully!
+     Step 1 COMPLETED: Data loaded successfully!
     📄 File path: ../data/raw/Electronic_sales_Sep2023-Sep2024.csv
-    📊 Initial data loaded: 20000 records
+     Initial data loaded: 20000 records
     
 
 ## 📐 Step 2: Inspect Shape
@@ -131,9 +131,9 @@ except Exception as e:
 
 ```python
 # Step 2: Inspect dataset shape
-print("✅ Step 2 COMPLETED: Dataset Shape Analysis")
+print(" Step 2 COMPLETED: Dataset Shape Analysis")
 print("=" * 50)
-print(f"📊 Dataset Shape: {df.shape}")
+print(f" Dataset Shape: {df.shape}")
 print(f"📈 Total Records (Rows): {df.shape[0]:,}")
 print(f"📋 Total Features (Columns): {df.shape[1]}")
 print(f"💾 Memory Usage: {df.memory_usage(deep=True).sum() / 1024**2:.2f} MB")
@@ -142,7 +142,7 @@ print(f"💾 Memory Usage: {df.memory_usage(deep=True).sum() / 1024**2:.2f} MB")
 expected_records = 20000
 actual_records = df.shape[0]
 if actual_records == expected_records:
-    print(f"✅ Record count matches expectation: {expected_records:,}")
+    print(f" Record count matches expectation: {expected_records:,}")
 else:
     print(f"⚠️  Record count differs from expected:")
     print(f"   Expected: {expected_records:,}")
@@ -150,13 +150,13 @@ else:
     print(f"   Difference: {abs(actual_records - expected_records):,}")
 ```
 
-    ✅ Step 2 COMPLETED: Dataset Shape Analysis
+     Step 2 COMPLETED: Dataset Shape Analysis
     ==================================================
-    📊 Dataset Shape: (20000, 16)
+     Dataset Shape: (20000, 16)
     📈 Total Records (Rows): 20,000
     📋 Total Features (Columns): 16
     💾 Memory Usage: 10.90 MB
-    ✅ Record count matches expectation: 20,000
+     Record count matches expectation: 20,000
     
 
 ## 🏷️ Step 3: Column Names & Data Types
@@ -165,7 +165,7 @@ else:
 
 ```python
 # Step 3: Analyze column names and data types
-print("✅ Step 3 COMPLETED: Column Names & Data Types Analysis")
+print(" Step 3 COMPLETED: Column Names & Data Types Analysis")
 print("=" * 60)
 
 # Display basic info
@@ -180,7 +180,7 @@ numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()
 categorical_cols = df.select_dtypes(include=['object']).columns.tolist()
 datetime_cols = df.select_dtypes(include=['datetime']).columns.tolist()
 
-print(f"\n📊 NUMERIC COLUMNS ({len(numeric_cols)}):")
+print(f"\n NUMERIC COLUMNS ({len(numeric_cols)}):")
 for i, col in enumerate(numeric_cols, 1):
     print(f"   {i}. {col} ({df[col].dtype})")
 
@@ -197,7 +197,7 @@ else:
     print(f"\n📅 DATETIME COLUMNS (0): No datetime columns detected yet")
 ```
 
-    ✅ Step 3 COMPLETED: Column Names & Data Types Analysis
+     Step 3 COMPLETED: Column Names & Data Types Analysis
     ============================================================
     📋 DATASET INFO:
     <class 'pandas.core.frame.DataFrame'>
@@ -227,7 +227,7 @@ else:
     ============================================================
     🏷️  COLUMN ANALYSIS:
     
-    📊 NUMERIC COLUMNS (7):
+     NUMERIC COLUMNS (7):
        1. Customer ID (int64)
        2. Age (int64)
        3. Rating (int64)
@@ -256,7 +256,7 @@ else:
 
 ```python
 # Step 4: Preview first rows
-print("✅ Step 4 COMPLETED: Data Preview")
+print(" Step 4 COMPLETED: Data Preview")
 print("=" * 60)
 
 print("👀 FIRST 5 ROWS:")
@@ -265,7 +265,7 @@ display(df.head())
 print("\n🔚 LAST 3 ROWS:")
 display(df.tail(3))
 
-print("\n📊 RANDOM SAMPLE (3 rows):")
+print("\n RANDOM SAMPLE (3 rows):")
 display(df.sample(3, random_state=42))
 
 print(f"\n📋 COLUMN NAMES ({len(df.columns)} total):")
@@ -274,12 +274,12 @@ for i, col in enumerate(df.columns, 1):
 
 # Check for any obvious data quality issues in preview
 print(f"\n🔍 QUICK DATA QUALITY CHECK:")
-print(f"   • All columns present: {'✅' if len(df.columns) == 16 else '❌'}")
-print(f"   • No completely empty columns: {'✅' if df.isnull().all().sum() == 0 else '❌'}")
-print(f"   • Customer IDs look numeric: {'✅' if df['Customer ID'].dtype in ['int64', 'float64'] else '❌'}")
+print(f"   • All columns present: {'' if len(df.columns) == 16 else '❌'}")
+print(f"   • No completely empty columns: {'' if df.isnull().all().sum() == 0 else '❌'}")
+print(f"   • Customer IDs look numeric: {'' if df['Customer ID'].dtype in ['int64', 'float64'] else '❌'}")
 ```
 
-    ✅ Step 4 COMPLETED: Data Preview
+     Step 4 COMPLETED: Data Preview
     ============================================================
     👀 FIRST 5 ROWS:
     
@@ -527,7 +527,7 @@ print(f"   • Customer IDs look numeric: {'✅' if df['Customer ID'].dtype in [
 
 
     
-    📊 RANDOM SAMPLE (3 rows):
+     RANDOM SAMPLE (3 rows):
     
 
 
@@ -650,9 +650,9 @@ print(f"   • Customer IDs look numeric: {'✅' if df['Customer ID'].dtype in [
        16. Add-on Total
     
     🔍 QUICK DATA QUALITY CHECK:
-       • All columns present: ✅
-       • No completely empty columns: ✅
-       • Customer IDs look numeric: ✅
+       • All columns present: 
+       • No completely empty columns: 
+       • Customer IDs look numeric: 
     
 
 ## 🔍 Step 5: Check Missing/Null Values
@@ -661,7 +661,7 @@ print(f"   • Customer IDs look numeric: {'✅' if df['Customer ID'].dtype in [
 
 ```python
 # Step 5: Check for missing/null values
-print("✅ Step 5 COMPLETED: Missing Values Analysis")
+print(" Step 5 COMPLETED: Missing Values Analysis")
 print("=" * 60)
 
 # Calculate missing values
@@ -675,7 +675,7 @@ missing_summary = pd.DataFrame({
     'Missing_Percentage': missing_percentages.values
 }).sort_values('Missing_Count', ascending=False)
 
-print("📊 MISSING VALUES SUMMARY:")
+print(" MISSING VALUES SUMMARY:")
 print(missing_summary.to_string(index=False))
 
 # Identify columns with missing data
@@ -685,7 +685,7 @@ if not columns_with_missing.empty:
     for _, row in columns_with_missing.iterrows():
         print(f"   • {row['Column']}: {row['Missing_Count']} ({row['Missing_Percentage']:.1f}%)")
 else:
-    print("\n✅ NO MISSING VALUES DETECTED - Dataset is complete!")
+    print("\n NO MISSING VALUES DETECTED - Dataset is complete!")
 
 # Check for empty strings or whitespace-only values
 print(f"\n🔍 CHECKING FOR EMPTY STRINGS...")
@@ -697,7 +697,7 @@ for col in df.select_dtypes(include=['object']).columns:
         empty_strings_found = True
 
 if not empty_strings_found:
-    print("   ✅ No empty strings detected in text columns")
+    print("    No empty strings detected in text columns")
 
 # Overall data completeness
 total_cells = df.shape[0] * df.shape[1]
@@ -710,9 +710,9 @@ print(f"   • Missing cells: {missing_cells:,}")
 print(f"   • Complete cells: {total_cells - missing_cells:,}")
 ```
 
-    ✅ Step 5 COMPLETED: Missing Values Analysis
+     Step 5 COMPLETED: Missing Values Analysis
     ============================================================
-    📊 MISSING VALUES SUMMARY:
+     MISSING VALUES SUMMARY:
                Column  Missing_Count  Missing_Percentage
     Add-ons Purchased           4868              24.340
                Gender              1               0.005
@@ -736,7 +736,7 @@ print(f"   • Complete cells: {total_cells - missing_cells:,}")
        • Gender: 1 (0.0%)
     
     🔍 CHECKING FOR EMPTY STRINGS...
-       ✅ No empty strings detected in text columns
+        No empty strings detected in text columns
     
     📈 OVERALL DATA COMPLETENESS: 98.48%
        • Total cells: 320,000
@@ -750,7 +750,7 @@ print(f"   • Complete cells: {total_cells - missing_cells:,}")
 
 ```python
 # Step 6: Check for duplicate records
-print("✅ Step 6 COMPLETED: Duplicate Analysis")
+print(" Step 6 COMPLETED: Duplicate Analysis")
 print("=" * 60)
 
 # Check for exact duplicates (all columns identical)
@@ -769,7 +769,7 @@ if total_duplicates > 0:
     # Option to remove duplicates
     print(f"\n⚠️  Consider removing duplicates in preprocessing step")
 else:
-    print("   ✅ No exact duplicate rows found!")
+    print("    No exact duplicate rows found!")
 
 # Check for potential duplicates based on key identifiers
 print(f"\n🔍 CHECKING KEY FIELD DUPLICATES:")
@@ -798,10 +798,10 @@ if customers_with_multiple > 0:
         print(f"   • Customer {customer_id}: {count} transactions")
 ```
 
-    ✅ Step 6 COMPLETED: Duplicate Analysis
+     Step 6 COMPLETED: Duplicate Analysis
     ============================================================
     🔄 EXACT DUPLICATES: 0
-       ✅ No exact duplicate rows found!
+        No exact duplicate rows found!
     
     🔍 CHECKING KEY FIELD DUPLICATES:
        • Customer ID + Purchase Date duplicates: 33
@@ -826,7 +826,7 @@ if customers_with_multiple > 0:
 
 ```python
 # Step 7: Validate date parsing
-print("✅ Step 7 COMPLETED: Date Parsing Validation")
+print(" Step 7 COMPLETED: Date Parsing Validation")
 print("=" * 60)
 
 # Check current data type of Purchase Date
@@ -841,7 +841,7 @@ try:
     # Convert to datetime
     df['Purchase Date'] = pd.to_datetime(df['Purchase Date'], format='%Y-%m-%d')
     
-    print(f"\n✅ DATE PARSING SUCCESSFUL!")
+    print(f"\n DATE PARSING SUCCESSFUL!")
     print(f"   • New data type: {df['Purchase Date'].dtype}")
     
     # Extract date range
@@ -849,7 +849,7 @@ try:
     max_date = df['Purchase Date'].max()
     date_range_days = (max_date - min_date).days
     
-    print(f"\n📊 DATE RANGE ANALYSIS:")
+    print(f"\n DATE RANGE ANALYSIS:")
     print(f"   • Earliest date: {min_date.strftime('%Y-%m-%d (%A)')}")
     print(f"   • Latest date: {max_date.strftime('%Y-%m-%d (%A)')}")
     print(f"   • Date range: {date_range_days} days ({date_range_days/365:.1f} years)")
@@ -861,7 +861,7 @@ try:
     if future_dates.any():
         print(f"⚠️  WARNING: {future_dates.sum()} future dates detected!")
     else:
-        print(f"✅ No future dates detected")
+        print(f" No future dates detected")
         
     # Monthly distribution
     df['Month'] = df['Purchase Date'].dt.month
@@ -886,7 +886,7 @@ except Exception as e:
         try:
             df['Purchase Date'] = pd.to_datetime(df['Purchase Date'], format=fmt, errors='coerce')
             if not df['Purchase Date'].isnull().all():
-                print(f"✅ Parsed with format: {fmt}")
+                print(f" Parsed with format: {fmt}")
                 parsed = True
                 break
         except:
@@ -897,7 +897,7 @@ except Exception as e:
         print("   • Manual date format investigation required")
 ```
 
-    ✅ Step 7 COMPLETED: Date Parsing Validation
+     Step 7 COMPLETED: Date Parsing Validation
     ============================================================
     📅 CURRENT PURCHASE DATE INFO:
        • Data type: object
@@ -906,14 +906,14 @@ except Exception as e:
          2. 2024-04-20
          3. 2023-10-17
     
-    ✅ DATE PARSING SUCCESSFUL!
+     DATE PARSING SUCCESSFUL!
        • New data type: datetime64[ns]
     
-    📊 DATE RANGE ANALYSIS:
+     DATE RANGE ANALYSIS:
        • Earliest date: 2023-09-24 (Sunday)
        • Latest date: 2024-09-23 (Monday)
        • Date range: 365 days (1.0 years)
-    ✅ No future dates detected
+     No future dates detected
     
     📈 MONTHLY DISTRIBUTION:
        • Total months covered: 13
@@ -926,18 +926,18 @@ except Exception as e:
 
 **All 7 steps completed successfully!**
 
-✅ **Task Checklist Status:**
-- ✅ **Step 1**: Data loaded successfully  
-- ✅ **Step 2**: Dataset shape analyzed  
-- ✅ **Step 3**: Column types identified  
-- ✅ **Step 4**: Data preview completed  
-- ✅ **Step 5**: Missing values checked  
-- ✅ **Step 6**: Duplicates analyzed  
-- ✅ **Step 7**: Date parsing validated  
+ **Task Checklist Status:**
+-  **Step 1**: Data loaded successfully  
+-  **Step 2**: Dataset shape analyzed  
+-  **Step 3**: Column types identified  
+-  **Step 4**: Data preview completed  
+-  **Step 5**: Missing values checked  
+-  **Step 6**: Duplicates analyzed  
+-  **Step 7**: Date parsing validated  
 
 **Ready for Phase 2: Exploratory Data Analysis (EDA)**
 
-## 📊 Figure Saving Examples
+##  Figure Saving Examples
 
 When you create visualizations, use the `save_figure()` function to automatically save them:
 
@@ -960,6 +960,6 @@ save_figure(fig, 'roc_curve_model', category='model_performance')
 ```
 
 **Figures will be saved as:**
-- 📊 `outputs/figures/distributions/price_distribution.png`
-- 📊 `outputs/figures/correlations/correlation_heatmap.png` 
-- 📊 `outputs/figures/model_performance/roc_curve_model.png`
+-  `outputs/figures/distributions/price_distribution.png`
+-  `outputs/figures/correlations/correlation_heatmap.png` 
+-  `outputs/figures/model_performance/roc_curve_model.png`
